@@ -8,7 +8,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     public static final double LOAD_FACTOR = 0.75;
     public static final int GROWN_SHIFT_AMOUNT = 1;
 
-    private static int capacity;
+    private int capacity;
     private int size;
     private Node<K, V>[] mapData;
     private int threshold;
@@ -63,7 +63,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         private V value;
         private Node<K, V> next;
 
-        public Node(K key, V value, Node<K, V> next) {
+        private Node(K key, V value, Node<K, V> next) {
             this.key = key;
             this.value = value;
             this.next = next;
@@ -95,6 +95,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
         mapData = newMapData;
         threshold = newThreshold;
+        capacity = newCapacity;
     }
 
     private int getIndex(K key) {
